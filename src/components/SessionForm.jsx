@@ -1,30 +1,37 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
+
+
 const SessionForm = () => {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState(null); // Use state to store the selected image file
     const [tag, setTag] = useState('upcoming');
-
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:3001/createSession', { title, description, image, tag });
-            console.log('Response:', response.data);
-            navigate('/admin')
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', description);
+            formData.append('image', image);
+            formData.append('tag', tag);
 
+            const response = await axios.post('http://localhost:3001/createSession', formData);
+            console.log('Response:', response.data);
+            navigate('/admin');
         } catch (error) {
             console.error('Error:', error.message);
-
         }
     };
 
-
+    const handleImageChange = (e) => {
+        setImage(e.target.files[0]); // Set the selected image file
+    };
 
     return (
         <div className="bg-gray-100 p-6 rounded-lg shadow-md">
@@ -51,12 +58,12 @@ const SessionForm = () => {
                     ></textarea>
                 </label>
                 <label className="block text-sm text-gray-600 mb-2">
-                    Image URL:
+                    Image Upload:
                     <input
-                        type="text"
+                        type="file"
                         name="image"
-                        value={image}
-                        onChange={(e) => setImage(e.target.value)}
+                        accept="image/*"
+                        onChange={handleImageChange}
                         className="block w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                     />
                 </label>
