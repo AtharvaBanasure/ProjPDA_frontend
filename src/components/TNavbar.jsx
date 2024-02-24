@@ -1,83 +1,48 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../assets/images/PDA_Logo_trsp.png";
 import { Link } from 'react-router-dom';
-import { UserContext } from "../UserContext";
 
-function Navbar() {
+function Navbar({ isLoggedIn }) {
 
-    const { setUserInfo, userInfo } = useContext(UserContext);
+    const [username, setUsername] = useState(null);
 
     useEffect(() => {
         fetch('http://localhost:3001/profile', {
             credentials: 'include'
         }).then(response => {
             response.json().then(userInfo => {
-                setUserInfo(userInfo);
+
             })
         })
     }, []);
-
-    function logout() {
-        fetch('http://localhost:3001/logout', {
-            credentials: 'include',
-            method: 'POST',
-        });
-        setUserInfo(null);
-    }
-
-    const username = userInfo?.username;
 
     return (
         <div className="m-7">
             <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
                     <div className="flex items-center space-x-3 rtl:space-x-reverse">
-                        <Link to='/'><img src={Logo} className="h-8" alt="Flowbite Logo" /></Link>
-                        <Link to='/'>
-                            <span className="px-2 font-bold text-lg">
-                                Professional Development Activity
-                            </span>
-                        </Link>
+                        <img src={Logo} className="h-8" alt="Flowbite Logo" />
+                        <span className="px-2 font-bold text-lg">
+                            Professional Development Activity
+                        </span>
                     </div>
                     <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
 
                         <div>
-                            {username && (
-                                <>
-                                    <Link
-                                        to="/createPost"
-                                        className="text-white bg-[#426B1F] hover:bg-[#486a2a] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
-                                    >
-                                        Create new post
-                                    </Link>
-                                    <Link
-                                        onClick={logout}
-                                        className=" ml-1 text-white bg-[#e70101] hover:bg-[#a53232] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
-                                    >
-                                        Logout
-                                    </Link>
-                                </>
+                            <Link
+                                to="/login"
+                                className="text-white bg-[#426B1F] hover:bg-[#486a2a] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
+                            >
+                                Login
+                            </Link>
 
-                            )}
-                            {
-                                !username && (
-                                    <>
-                                        <Link
-                                            to="/login"
-                                            className="text-white bg-[#426B1F] hover:bg-[#486a2a] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
-                                        >
-                                            Login
-                                        </Link>
+                            <Link
+                                to="/register"
+                                className=" ml-1 text-white bg-[#426B1F] hover:bg-[#486a2a] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
+                            >
+                                Register
+                            </Link>
 
-                                        {/* <Link
-                                            to="/register"
-                                            className=" ml-1 text-white bg-[#426B1F] hover:bg-[#486a2a] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
-                                        >
-                                            Register
-                                        </Link> */}
-                                    </>
-                                )
-                            }
                         </div>
 
                         <button

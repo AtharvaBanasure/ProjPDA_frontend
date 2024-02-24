@@ -5,9 +5,7 @@ import Footer from '../components/Footer'
 function Resources() {
     return (
         <>
-            <h1>Resources</h1>
             <Comp />
-            <Footer />
         </>
     )
 }
