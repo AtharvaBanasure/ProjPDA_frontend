@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from "react-router-dom";
 const RegisterPage = () => {
+
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -14,16 +16,23 @@ const RegisterPage = () => {
             return;
         }
 
-        const response = await fetch('http://localhost:3001/register', {
-            method: 'POST',
-            body: JSON.stringify({ username, password }),
-            headers: { 'Content-Type': 'application/json' }
-        })
+        try {
+            const response = await fetch('http://localhost:3001/register', {
+                method: 'POST',
+                body: JSON.stringify({ username, password }),
+                headers: { 'Content-Type': 'application/json' }
+            });
 
-        if (response.status === 2000) {
-            // alert('Registration Successful.')
-        } else {
-            alert('Registration Failed. Try again Later !!');
+            if (response.status === 200) {
+                alert('Registration Successful.');
+                navigate('/login');
+            } else {
+                const errorMessage = await response.text();
+                throw new Error(errorMessage);
+            }
+        } catch (error) {
+            console.error('Registration failed:', error.message);
+            alert('Registration failed. Please try again later.');
         }
 
     };

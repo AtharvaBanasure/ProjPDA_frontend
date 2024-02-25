@@ -6,15 +6,21 @@ function Navbar({ isLoggedIn }) {
 
     const [username, setUsername] = useState(null);
 
+
     useEffect(() => {
         fetch('http://localhost:3001/profile', {
             credentials: 'include'
         }).then(response => {
             response.json().then(userInfo => {
-
-            })
-        })
+                console.log(userInfo);
+            }).catch(error => {
+                console.error('Error parsing JSON:', error);
+            });
+        }).catch(error => {
+            console.error('Fetch error:', error);
+        });
     }, []);
+
 
     return (
         <div className="m-7">

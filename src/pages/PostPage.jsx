@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { formatISO9075 } from "date-fns"
 import { UserContext } from '../UserContext'
 
@@ -7,6 +7,8 @@ function PostPage() {
     const [postInfo, setPostInfo] = useState(null);
     const { id } = useParams();
     const { userInfo } = useContext(UserContext);
+    const navigate = useNavigate(); // Use useNavigate hook
+
 
     useEffect(() => {
         fetch(`http://localhost:3001/post/${id}`)
@@ -22,7 +24,27 @@ function PostPage() {
             .catch(error => {
                 console.error('Error fetching post:', error);
             });
-    }, []);
+    }, [id]);
+
+    const handleDelete = () => {
+        fetch(`http://localhost:3001/post/${id}`, {
+            method: 'DELETE',
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data.message);
+                navigate('/events');
+
+            })
+            .catch(error => {
+                console.error('Error deleting post:', error);
+            });
+    };
 
     if (!postInfo) return '';
 
@@ -58,8 +80,11 @@ function PostPage() {
 
                                     <Link to={`/edit/${postInfo._id}`} className=' p-2  text-xs bg-gray-700 text-white rounded-md'>
                                         Edit this post
-
                                     </Link>
+
+                                    <button onClick={handleDelete} className='p-2 text-xs ml-2 bg-red-700 text-white rounded-md'>
+                                        Delete this post
+                                    </button>
                                 </div>
                             )
                         }

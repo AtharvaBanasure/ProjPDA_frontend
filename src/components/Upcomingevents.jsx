@@ -5,12 +5,21 @@ function UpcomingEvents() {
     const [upcomingPosts, setUpcomingPosts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/upcoming-posts').then((response) => {
-            response.json().then((posts) => {
+        fetch('http://localhost:3001/upcoming-posts')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((posts) => {
                 setUpcomingPosts(posts);
+            })
+            .catch((error) => {
+                console.error('Error fetching upcoming posts:', error);
             });
-        });
     }, []);
+
 
     return (
         <div className='mt-20 py-20 md:-mt-20 min-h-screen flex flex-col items-center'>
