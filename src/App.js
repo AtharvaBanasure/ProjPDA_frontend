@@ -12,7 +12,7 @@ import CreatePost from './pages/CreatePost';
 import PostPage from './pages/PostPage';
 import EditPost from './pages/EditPost';
 import Contact from './pages/Contact';
-
+import NotFound from './pages/NotFound'
 // import UpcomingEvents from './components/Upcomingevents';
 
 
@@ -34,6 +34,8 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path="*" element={<NotFound />} />
+
 
           </Route>
         </Routes>
