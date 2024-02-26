@@ -7,7 +7,7 @@ function PastEvents() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/posts').then(response => {
+        fetch(`${process.env.REACT_APP_API_URL}/posts`).then(response => {
             response.json().then(posts => {
                 setPosts(posts);
             });

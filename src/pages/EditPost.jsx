@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 
@@ -43,7 +43,7 @@ function EditPost() {
 
     useEffect(() => {
 
-        axios.get(`http://localhost:3001/post/${id}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/post/${id}`)
             .then(response => {
                 const postInfo = response.data;
                 setTitle(postInfo.title);
@@ -68,7 +68,7 @@ function EditPost() {
             formData.append('image', existingImage); // Use existingImage for edit
             formData.append('tag', tag);
 
-            const response = await axios.put(`http://localhost:3001/post/${id}`, formData);
+            const response = await axios.put(`${process.env.REACT_APP_API_URL}/post/${id}`, formData);
 
             if (response.status === 200) {
                 setRedirect(true);
@@ -86,7 +86,7 @@ function EditPost() {
             <div className="mt-2">
                 <p className="text-gray-600 mb-1">Existing Image:</p>
                 <img
-                    src={`http://localhost:3001/${existingImage}`}
+                    src={`${process.env.REACT_APP_API_URL}/${existingImage}`}
                     alt="Existing"
                     className="rounded-md max-h-40 object-cover"
                 />
@@ -140,7 +140,7 @@ function EditPost() {
                         theme="snow"
                         value={content}
                         onChange={(e) => setContent(e)}
-                        style={{ height: '250px' }}
+                        style={{ height: '500px' }}
                         modules={modules}
                         formats={formats}
                     />
@@ -159,7 +159,7 @@ function EditPost() {
                     </label>
                     <button
                         type="submit"
-                        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
+                        className="bg-green-700 text-white py-2 px-4 rounded-md hover:bg-green-500 focus:outline-none focus:shadow-outline-blue"
                     >
                         Edit Post
                     </button>

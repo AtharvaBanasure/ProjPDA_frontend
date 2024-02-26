@@ -5,7 +5,7 @@ function UpcomingEvents() {
     const [upcomingPosts, setUpcomingPosts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/upcoming-posts')
+        fetch(`${process.env.REACT_APP_API_URL}/upcoming-posts`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);

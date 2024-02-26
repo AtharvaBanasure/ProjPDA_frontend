@@ -21,7 +21,7 @@ const SessionForm = () => {
             formData.append('image', image);
             formData.append('tag', tag);
 
-            const response = await axios.post('http://localhost:3001/createSession', formData);
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/createSession`, formData);
             console.log('Response:', response.data);
             navigate('/admin');
         } catch (error) {

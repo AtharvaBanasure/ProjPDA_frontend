@@ -11,7 +11,7 @@ function PostPage() {
 
 
     useEffect(() => {
-        fetch(`http://localhost:3001/post/${id}`)
+        fetch(`${process.env.REACT_APP_API_URL}/post/${id}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -27,7 +27,7 @@ function PostPage() {
     }, [id]);
 
     const handleDelete = () => {
-        fetch(`http://localhost:3001/post/${id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/post/${id}`, {
             method: 'DELETE',
         })
             .then(response => {
@@ -78,11 +78,11 @@ function PostPage() {
                             (
                                 <div className=' mb-2'>
 
-                                    <Link to={`/edit/${postInfo._id}`} className=' p-2  text-xs bg-gray-700 text-white rounded-md'>
+                                    <Link to={`/edit/${postInfo._id}`} className=' p-2  text-xs bg-gray-700 hover:bg-gray-500 text-white rounded-md'>
                                         Edit this post
                                     </Link>
 
-                                    <button onClick={handleDelete} className='p-2 text-xs ml-2 bg-red-700 text-white rounded-md'>
+                                    <button onClick={handleDelete} className='p-2 text-xs ml-2 bg-red-700 hover:bg-red-500 text-white rounded-md'>
                                         Delete this post
                                     </button>
                                 </div>

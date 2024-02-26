@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 
@@ -34,10 +34,9 @@ const CreatePost = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [content, setContent] = useState('')
-    const [image, setImage] = useState(null); // Use state to store the selected image file
+    const [image, setImage] = useState(null);
     const [tag, setTag] = useState('upcoming');
     const [redirect, setRedirect] = useState(false);
-    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -46,11 +45,11 @@ const CreatePost = () => {
             const formData = new FormData();
             formData.append('title', title);
             formData.append('description', description);
-            formData.append('content', content); // Add content to the form data
+            formData.append('content', content);
             formData.append('image', image);
             formData.append('tag', tag);
 
-            const response = await axios.post('http://localhost:3001/createPost', formData);
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/createPost`, formData);
 
             if (response.status === 200) {
                 setRedirect(true);
@@ -62,7 +61,7 @@ const CreatePost = () => {
     };
 
     const handleImageChange = (e) => {
-        setImage(e.target.files[0]); // Set the selected image file
+        setImage(e.target.files[0]);
     };
 
     if (redirect) {
@@ -111,7 +110,7 @@ const CreatePost = () => {
                         theme="snow"
                         value={content}
                         onChange={(e) => setContent(e)}
-                        style={{ height: '250px' }}
+                        style={{ height: '500px' }}
                         modules={modules}
                         formats={formats}
                     />
@@ -130,7 +129,7 @@ const CreatePost = () => {
                     </label>
                     <button
                         type="submit"
-                        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
+                        className="bg-green-700 text-white py-2 px-4 rounded-md hover:bg-green-500 focus:outline-none focus:shadow-outline-blue"
                     >
                         Add Post
                     </button>

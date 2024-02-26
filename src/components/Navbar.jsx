@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Logo from "../assets/images/PDA_Logo_trsp.png";
 import { Link } from 'react-router-dom';
 import { UserContext } from "../UserContext";
@@ -8,17 +8,17 @@ function Navbar() {
     const { setUserInfo, userInfo } = useContext(UserContext);
 
     useEffect(() => {
-        fetch('http://localhost:3001/profile', {
+        fetch(`${process.env.REACT_APP_API_URL}/profile`, {
             credentials: 'include'
         }).then(response => {
             response.json().then(userInfo => {
                 setUserInfo(userInfo);
             })
         })
-    }, []);
+    });
 
     function logout() {
-        fetch('http://localhost:3001/logout', {
+        fetch(`${process.env.REACT_APP_API_URL}/logout`, {
             credentials: 'include',
             method: 'POST',
         });
@@ -52,7 +52,7 @@ function Navbar() {
                                     </Link>
                                     <Link
                                         onClick={logout}
-                                        className=" ml-1 text-white bg-[#e70101] hover:bg-[#a53232] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
+                                        className=" ml-1 text-white bg-red-700 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
                                     >
                                         Logout
                                     </Link>
