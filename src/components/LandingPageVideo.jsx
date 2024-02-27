@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaVolumeUp, FaVolumeMute } from "react-icons/fa"; // Import icons from Font Awesome
 import videoL from "../assets/images/IMG_8063.MP4"; // Make sure the path is correct
 
 function LandingPageVideo() {
+    const [muted, setMuted] = useState(true);
+
     const videoStyle = {
         display: "flex",
         justifyContent: "center",
@@ -14,9 +17,16 @@ function LandingPageVideo() {
         maxHeight: "100%",
     };
 
+    const toggleMute = () => {
+        setMuted(!muted);
+    };
+
     return (
         <div style={videoStyle}>
-            <video src={videoL} autoPlay loop muted style={videoContainerStyle}></video>
+            <video src={videoL} autoPlay loop muted={muted} style={videoContainerStyle}></video>
+            <button onClick={toggleMute}>
+                {muted ? <FaVolumeMute /> : <FaVolumeUp />} {/* Use Font Awesome icons */}
+            </button>
         </div>
     );
 }

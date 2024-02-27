@@ -1,7 +1,6 @@
-import React from 'react'
-import Carousel from '../components/Carousel'
+import React from 'react';
 import UpcomingEvents from '../components/UpcomingEvents'
-import LandingPageVideo from '../components/LandingPageVideo'
+import LandingPageVideo from '../components/LandingPageVideo';
 
 function HomePage() {
     return (
