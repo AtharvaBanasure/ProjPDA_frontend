@@ -1,6 +1,6 @@
 import React from 'react'
 import Carousel from '../components/Carousel'
-import UpcomingEvents from '../components/UpcomingEvents'
+import UpcomingEvents from '../components/Upcomingevents'
 
 function HomePage() {
     return (
