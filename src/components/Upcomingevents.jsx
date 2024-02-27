@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import PostComp from '../components/PostComp';
+import PostComp from './PostComp';
 
 function UpcomingEvents() {
     const [upcomingPosts, setUpcomingPosts] = useState([]);
