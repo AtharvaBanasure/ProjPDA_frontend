@@ -32,21 +32,15 @@ function Navbar() {
   const username = userInfo?.username;
 
   return (
-    <div className="">
-      <nav className="w-full bg-white top-0 start-0 border-b border-gray-200">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
-          <div className="flex items-center space-x-3  rtl:space-x-reverse">
-            <Link to="/">
-              <img src={Logo} className="h-8" alt="Flowbite Logo" />
-            </Link>
-            <Link to="/">
-              <span className="px-2 font-bold text-lg">
-                Professional Development Activity
-              </span>
-            </Link>
-          </div>
-          <div className="flex md:order-2 gap-[4vw] md:space-x-0 rtl:space-x-reverse">
-            <div>
+    <nav className="bg-white mb-2 w-full z-20 top-0 start-0 border-b border-gray-200">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between  p-4 ">
+        <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <img src={Logo} className="h-8" alt="Flowbite Logo" />
+          <span className="self-center text-base md:text-2xl whitespace-nowrap font-bold">Professional Development Activity</span>
+
+        </Link>
+        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <div>
               {username && (
                 <>
                   <Link
@@ -57,7 +51,7 @@ function Navbar() {
                   </Link>
                   <Link
                     onClick={logout}
-                    className="ml-1 text-white bg-red-700 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
+                    className="ml-1 text-white order-last bg-red-700 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
                   >
                     Logout
                   </Link>
@@ -67,117 +61,43 @@ function Navbar() {
                 <>
                   <Link
                     to="/login"
-                    className="text-white bg-green-700 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
+                    className="text-white order-last bg-green-700 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
                   >
                     Login
                   </Link>
                 </>
               )}
             </div>
-            <div className="flex items-center">
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                type="button"
-                className={`inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200`}
-                aria-expanded={menuOpen}
-              >
-                <span className="sr-only">Toggle menu</span>
-                {menuOpen ? (
-                  <svg
-                    className="w-5 h-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M3.293 3.293a1 1 0 011.414 0L10 8.586l5.293-5.293a1 1 0 111.414 1.414L11.414 10l5.293 5.293a1 1 0 01-1.414 1.414L10 11.414l-5.293 5.293a1 1 0 01-1.414-1.414L8.586 10 3.293 4.707a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="w-5 h-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 3a1 1 0 00-1 1v11a1 1 0 102 0V4a1 1 0 00-1-1zm-1.707-2.707a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L9 4.414l6.293 6.293a1 1 0 001.414-1.414l-7-7z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                )}
-              </button>
-            </div>
-          </div>
-          <div
-            className={`${
-              menuOpen ? "mt-14 md:mt-0" : "-top-full"
-            } nav-links duration-500 md:static md:min-h-fit flex flex-row md:w-auto absolute min-h-[60vh] left-0 w-full  items-center px-5`}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            type="button"
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-expanded={menuOpen ? "true" : "false"}
           >
-            <ul className="flex flex-col md:flex-row  p-4 space-x-3 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
-              <li>
-                <div className="flex flex-row">
-                  <div className="px-1 mt-1">
-                    <IoHomeOutline />
-                  </div>
-                  <div>
-                    <Link
-                      to="/"
-                      className="block py-2 px-3 text-black bg-[#426B1F] rounded md:bg-transparent md:text-[#426B1F] md:p-0"
-                      aria-current="page"
-                    >
-                      Home
-                    </Link>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="flex flex-row">
-                  <div className=" px-1 mt-1">
-                    <BsInfoCircle />
-                  </div>
-                  <div>
-                    <Link
-                      to="/about"
-                      className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#426B1F] md:p-0"
-                    >
-                      About
-                    </Link>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="flex flex-row">
-                  <div className=" px-1 mt-1">
-                    <MdOutlineEvent />
-                  </div>
-                  <Link
-                    to="/events"
-                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#426B1F] md:p-0"
-                  >
-                    Events
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className="flex flex-row">
-                  <div className=" px-1 mt-1">
-                    <MdOutlineContactPage />
-                  </div>
-                  <Link
-                    to="/contact"
-                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#426B1F] md:p-0"
-                  >
-                    Contact
-                  </Link>
-                </div>
-              </li>
-            </ul>
-          </div>
+            <span className="sr-only">Open main menu</span>
+            <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>
+            </svg>
+          </button>
         </div>
-      </nav>
-    </div>
+        <div className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${menuOpen ? "block" : "hidden"}`}>
+          <ul className="flex flex-col md:flex-row p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse  md:mt-0 md:border-0   ">
+            <li>
+            <Link to="/" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0 md:dark:hover:text-green-500 dark:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Home</Link>
+            </li>
+            <li>
+              <Link to="/about" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0 md:dark:hover:text-green-500 dark:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</Link>
+            </li>
+            <li>
+              <Link to="/events" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0 md:dark:hover:text-green-500 dark:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Events</Link>
+            </li>
+            <li>
+              <Link to="/contact" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0 md:dark:hover:text-green-500 dark:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 }
 
