@@ -82,17 +82,39 @@ function Navbar() {
         </div>
         <div className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${menuOpen ? "block" : "hidden"}`}>
           <ul className="flex flex-col md:flex-row p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse  md:mt-0 md:border-0   ">
+
             <li>
+              <div className="flex flex-row ">
+                <div className="py-1 px-1">
+              <IoHomeOutline />
+              </div>
             <Link to="/" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0 md:dark:hover:text-green-500 dark:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Home</Link>
+            </div>
             </li>
+
             <li>
+            <div className="flex flex-row ">
+                <div className="py-1 px-1">
+              <BsInfoCircle/>
+              </div>
               <Link to="/about" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0 md:dark:hover:text-green-500 dark:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</Link>
+            </div>
             </li>
             <li>
+            <div className="flex flex-row ">
+                <div className="py-1 px-1">
+              <MdOutlineEvent/>
+              </div>
               <Link to="/events" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0 md:dark:hover:text-green-500 dark:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Events</Link>
+              </div>
             </li>
             <li>
+            <div className="flex flex-row ">
+                <div className="py-1 px-1">
+              <MdOutlineContactPage/>
+              </div>
               <Link to="/contact" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0 md:dark:hover:text-green-500 dark:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</Link>
+              </div>
             </li>
           </ul>
         </div>
