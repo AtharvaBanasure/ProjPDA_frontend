@@ -33,7 +33,7 @@ function Navbar() {
 
   return (
     <nav className="bg-white mb-2 w-full z-20 top-0 start-0 border-b border-gray-200">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between  p-4 ">
+      <div className="w-full flex flex-wrap items-center justify-between  p-4 ">
         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={Logo} className="h-8" alt="Flowbite Logo" />
           <span className="self-center text-base md:text-2xl whitespace-nowrap font-bold">Professional Development Activity</span>
