@@ -36,7 +36,10 @@ function Navbar() {
       <div className="w-full flex flex-wrap items-center justify-between  p-4 ">
         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={Logo} className="h-8" alt="Flowbite Logo" />
-          <span className="self-center text-base md:text-2xl whitespace-nowrap font-bold">Professional Development Activity</span>
+          <span className="self-center text-base md:text-2xl whitespace-nowrap font-bold">
+  <span className="hidden md:block">Professional Development Activity</span>
+</span>
+
 
         </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -71,7 +74,7 @@ function Navbar() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="inline-flex items-center p-2 w-7 h-7 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-expanded={menuOpen ? "true" : "false"}
           >
             <span className="sr-only">Open main menu</span>
