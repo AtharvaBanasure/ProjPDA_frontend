@@ -36,7 +36,10 @@ function Navbar() {
       <div className="w-full flex flex-wrap items-center justify-between  p-4 ">
         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={Logo} className="h-8" alt="Flowbite Logo" />
-          <span className="self-center text-base md:text-2xl whitespace-nowrap font-bold">Professional Development Activity</span>
+          <span className="self-center text-base md:text-2xl whitespace-nowrap font-bold">
+  <span className="hidden md:block">Professional Development Activity</span>
+</span>
+
 
         </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
