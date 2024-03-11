@@ -22,7 +22,7 @@ function UpcomingEvents() {
 
 
     return (
-        <div className='mt-20 py-20 md:-mt-20 min-h-screen flex flex-col items-center'>
+        <div className='mt-16 py-20 md:mt-12 min-h-screen flex flex-col items-center'>
             <h1 className='text-3xl font-bold mb-6'>Upcoming Events</h1>
             <hr className='border-t border-gray-300 w-16 mb-8' />
 

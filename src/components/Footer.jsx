@@ -4,11 +4,8 @@ import { Link } from 'react-router-dom';
 function Footer() {
     return (
         <div className="text-white body-font bg-gray-700">
-            <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+            <div className="container px-5 py-8 mx-auto flex flex-col items-center md:flex-row justify-between">
                 <Link to="/" className="flex title-font font-medium items-center md:justify-start justify-center text-white">
-                    {/* Uncomment the lines below if you have a logo */}
-                    {/* <img src={Logo} className="h-8" alt="Flowbite Logo" /> */}
-                    {/* <img className="h-8" alt="Flowbite Logo" /> */}
                     <span className="ml-3 text-xl">Professional Development Activity</span>
                 </Link>
                 <p className="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
@@ -17,6 +14,14 @@ function Footer() {
                         @pict
                     </a>
                 </p>
+                <div className="flex flex-col items-center mt-4 px-32 md:mt-0">
+                    <p align='center' className="text-white mb-2">This page was viewed</p>
+                    <div className="flex items-center">
+                        <img align="center" alt="Repo Visitors" src="https://profile-counter.glitch.me/Pda/count.svg"/>
+                        
+                    </div>
+                    <p className="text-white ml-2">times</p>
+                </div>
                 <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
                     <a href="https://www.facebook.com/PICTOfficial/" target='_blank' className="text-white">
                         <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
