@@ -17,7 +17,7 @@ function Contact() {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:3001/mail", {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/mail`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
