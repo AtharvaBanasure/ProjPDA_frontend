@@ -17,7 +17,7 @@ function Contact() {
         e.preventDefault();
 
         try {
-            const response = await fetch("https://proj-pda-frontend.vercel.app/contact/mail", {
+            const response = await fetch("/mail", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -25,20 +25,19 @@ function Contact() {
                 body: JSON.stringify({ name, email, msg: message })
             });
 
-            if (response.ok) {
-                alert("Email sent successfully!");
-            } else {
-                alert("Failed to send email. Please try again later.");
+            if (!response.ok) {
+                throw new Error(`Failed to submit: ${response.statusText}`);
             }
+
+            alert("Email sent successfully!");
         } catch (error) {
-            console.error("Error sending email:", error);
-            alert("Failed to send email. Please try again later.");
+            console.error("Error submitting form:", error);
+            alert("Failed to submit. Please try again later.");
         }
     };
 
     return (
         <section className="text-gray-600 body-font relative">
-            {/* Form content */}
             <form className="container px-5 py-12 mx-auto" onSubmit={handleSubmit}>
                 {/* Form fields */}
                 {/* Name */}
@@ -84,7 +83,7 @@ function Contact() {
                 </div>
                 {/* Submit button */}
                 <div className="p-2 w-full">
-                    <button type="submit" className="flex mx-auto text-white  bg-green-700 hover:bg-green-500 border-0 py-2 px-8 focus:outline-none rounded text-lg">Submit</button>
+                    <button type="submit" className="flex mx-auto text-white bg-green-700 hover:bg-green-500 border-0 py-2 px-8 focus:outline-none rounded text-lg">Submit</button>
                 </div>
             </form>
         </section>
