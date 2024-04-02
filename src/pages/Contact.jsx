@@ -13,11 +13,9 @@ function Contact() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
+    const handleSubmit = async () => {
         try {
-            const response = await fetch("/mail", {
+            const response = await fetch("http://localhost:3001/mail", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -25,20 +23,27 @@ function Contact() {
                 body: JSON.stringify({ name, email, msg: message })
             });
 
-            if (!response.ok) {
-                throw new Error(`Failed to submit: ${response.statusText}`);
+            if (response.ok) {
+                alert("Email sent successfully!");
+                // Clear form data after successful submission
+                setFormData({
+                    name: "",
+                    email: "",
+                    message: ""
+                });
+            } else {
+                alert("Failed to send email. Please try again later.");
             }
-
-            alert("Email sent successfully!");
         } catch (error) {
-            console.error("Error submitting form:", error);
-            alert("Failed to submit. Please try again later.");
+            console.error("Error sending email:", error);
+            alert("Failed to send email. Please try again later.");
         }
     };
 
     return (
         <section className="text-gray-600 body-font relative">
-            <form className="container px-5 py-12 mx-auto" onSubmit={handleSubmit}>
+            {/* Form content */}
+            <div className="container px-5 py-12 mx-auto">
                 {/* Form fields */}
                 {/* Name */}
                 <div className="p-2 w-1/2">
@@ -83,9 +88,9 @@ function Contact() {
                 </div>
                 {/* Submit button */}
                 <div className="p-2 w-full">
-                    <button type="submit" className="flex mx-auto text-white bg-green-700 hover:bg-green-500 border-0 py-2 px-8 focus:outline-none rounded text-lg">Submit</button>
+                    <button type="button" onClick={handleSubmit} className="flex mx-auto text-white bg-green-700 hover:bg-green-500 border-0 py-2 px-8 focus:outline-none rounded text-lg">Submit</button>
                 </div>
-            </form>
+            </div>
         </section>
     );
 }
