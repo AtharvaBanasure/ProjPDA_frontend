@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 
 function Contact() {
     const [formData, setFormData] = useState({
@@ -13,32 +14,35 @@ function Contact() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async () => {
-        try {
-            const response = await fetch("https://projpda-backend.onrender.com/mail", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ name, email, msg: message })
-            });
+  
 
-            if (response.ok) {
-                alert("Email sent successfully!");
-                // Clear form data after successful submission
-                setFormData({
-                    name: "",
-                    email: "",
-                    message: ""
-                });
-            } else {
-                alert("Failed to send email. Please try again later.");
-            }
-        } catch (error) {
-            console.error("Error sending email:", error);
+const handleSubmit = async () => {
+    try {
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/mail`, {
+            name: name,
+            email: email,
+            msg: message
+        });
+
+        console.log(response);
+
+        if (response.status === 200) {
+            alert("Email sent successfully!");
+            // Clear form data after successful submission
+            setFormData({
+                name: "",
+                email: "",
+                message: ""
+            });
+        } else {
             alert("Failed to send email. Please try again later.");
         }
-    };
+    } catch (error) {
+        console.error("Error sending email:", error);
+        alert("Failed to send email. Please try again later.");
+    }
+};
+
 
     return (
         <section className="text-gray-600 body-font relative">
