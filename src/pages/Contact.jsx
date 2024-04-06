@@ -15,7 +15,7 @@ function Contact() {
 
     const handleSubmit = async () => {
         try {
-            const response = await fetch("http://localhost:3001/mail", {
+            const response = await fetch("https://projpda-backend.onrender.com/mail", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
