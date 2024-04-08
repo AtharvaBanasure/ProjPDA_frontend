@@ -1,13 +1,41 @@
 // src/components/Login.js
-import React, { useContext, useState } from 'react';
-import { Navigate } from 'react-router-dom'
+
+import React, { useContext, useState, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 import { UserContext } from '../UserContext';
 
-const LoginPage = ({ onLogin }) => {
+const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
-    const { setUserInfo } = useContext(UserContext);
+    const { userInfo, setUserInfo } = useContext(UserContext);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            // Fetch user info using token
+            fetchUserInfo(token);
+        }
+    }, []); // Empty dependency array ensures this effect runs only once on component mount
+
+    async function fetchUserInfo(token) {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/profile`, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+            credentials: 'include',
+        });
+
+        if (response.ok) {
+            response.json().then(userInfo => {
+                setUserInfo(userInfo);
+                setRedirect(true);
+            });
+        } else {
+            console.error('Failed to fetch user info');
+        }
+    }
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -25,22 +53,19 @@ const LoginPage = ({ onLogin }) => {
                 localStorage.setItem('token', userInfo.token);
                 setRedirect(true);
             });
-        }
-        else {
+        } else {
             alert("Wrong Credential");
         }
-
     };
 
     if (redirect) {
-        return <Navigate to={'/'} />
+        return <Navigate to={'/'} />;
     }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-md w-full sm:w-96">
                 <h1 className="text-3xl font-semibold mb-6 text-gray-800"> Login</h1>
-
 
                 <form onSubmit={handleSubmit}>
                     <label className="block mb-4">
@@ -68,9 +93,6 @@ const LoginPage = ({ onLogin }) => {
                         Login
                     </button>
                 </form>
-
-
-
             </div>
         </div>
     );
