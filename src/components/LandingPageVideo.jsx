@@ -10,19 +10,23 @@ function LandingPageVideo() {
     };
 
     return (
-        <>
-       
-        <div className="mt-6   sm:m-0">
-            <video 
-                src={videoL} 
-                autoPlay 
-                loop 
-                muted={muted} 
-                className="w-full h-screen  sm:h-screen  sm:m-0" // Adjust the height for small devices
-            ></video>
-            
+        <div className="relative">
+            <div className="overflow-hidden aspect-w-16 aspect-h-9">
+                <video 
+                    src={videoL} 
+                    autoPlay 
+                    loop 
+                    muted={muted} 
+                    className="w-full h-full  sm:h-screen  "
+                ></video>
+            </div>
+            {/* <button 
+                className="absolute top-2 right-2 text-white bg-gray-800 rounded-full p-2" 
+                onClick={toggleMute}
+            >
+                {muted ? <FaVolumeMute /> : <FaVolumeUp />}
+            </button> */}
         </div>
-        </>
     );
 }
 

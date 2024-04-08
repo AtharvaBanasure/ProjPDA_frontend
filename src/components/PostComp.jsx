@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { formatISO9075 } from "date-fns"
 import { Link } from 'react-router-dom'
 
 function PostComp({ _id, title, description, image, createdAt }) {
+    const [expanded,setExpanded]=useState(false);
+    const toggleExpanded=(event)=>{
+        setExpanded(!expanded)
+    };
     return (
-        <div class="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96">
+        <div class="relative flex flex-col mt-6   text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96">
             <div
                 class="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
 
@@ -23,18 +27,22 @@ function PostComp({ _id, title, description, image, createdAt }) {
 
 
                 <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
-                    {description}
+                    {expanded ? description: `${description.slice(0,100)}  `}
+
                 </p>
+                <button onClick={toggleExpanded} className='font-bold'>
+                    {expanded ? "Read less":"Read more"}
+                </button>
                 <p class="pt-2 block font-sans underline text-sm antialiased font-light leading-relaxed text-inherit italic">
                     <time>{formatISO9075(new Date(createdAt))}</time>
                 </p>
             </div>
-            <div class="p-6 pt-0">
+            <div class="p-6 pt-0 ">
                 <Link to={`/post/${_id}`}>
                     <button
                         class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                         type="button">
-                        Read More
+                        Learn More
                     </button>
                 </Link>
 

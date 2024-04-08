@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import aptitude from "../assets/images/aptitude1.webp";
-import coding  from "../assets/images/coding1.webp";
+// import coding  from "../assets/images/coding1.webp";
 import oop  from "../assets/images/oop.png";
-import dbms  from "../assets/images/dbms.jpeg";
+// import dbms  from "../assets/images/dbms.jpeg";
 
 function Resources(props) {
   const [activeIndex, setActiveIndex] = useState(null);
