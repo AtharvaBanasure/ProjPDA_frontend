@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import ved from '../assets/images/Vedant_Photo.png';
-import prat from '../assets/images/WhatsApp Image 2024-04-09 at 2.22.40 PM.jpeg';
+import prat from '../assets/images/profile.jpg';
 import atha from '../assets/images/PSX_20240223_234441.jpg';
 
 function Faculty() {

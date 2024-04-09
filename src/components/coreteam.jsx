@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import ved from '../assets/images/Vedant_Photo.png';
-import prat from '../assets/images/WhatsApp Image 2024-04-09 at 2.22.40 PM.jpeg';
+import prat from '../assets/images/profile.jpg';
 import atha from '../assets/images/PSX_20240223_234441.jpg';
 
 function Coreteam() {
@@ -65,6 +65,7 @@ function Coreteam() {
                                 class="h-40 w-40 border-2 border-green-800 rounded-full overflow-hidden bg-gray-200"
                             >
                                 <img
+                                  
                                     src={prat}
                                     alt=""
                                     class=""
