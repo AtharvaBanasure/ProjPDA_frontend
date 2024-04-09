@@ -10,6 +10,12 @@ function HomePage() {
     const webteam = () => {
         navigate("/webteam")
     }
+    const Coreteam = () => {
+        navigate("/Coreteam")
+    }
+    const faculty = () => {
+        navigate("/faculty")
+    }
 
 
     return (
@@ -36,8 +42,8 @@ function HomePage() {
                 </div>
                 <div className="ml-14">
                     <button onClick={webteam} className="bg-green-800 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-12 mb-2" >Web Committee</button>
-                    <button className="bg-green-800 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-12 mb-2">Core Committee</button>
-                    <button className="bg-green-800 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-12 mb-2">Faculty Committee</button>
+                    <button onClick={Coreteam} className="bg-green-800 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-12 mb-2">Core Committee</button>
+                    <button onClick={faculty} className="bg-green-800 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-12 mb-2">Faculty Committee</button>
                 </div>
             </div>
         </div>

@@ -4,14 +4,14 @@ import ved from '../assets/images/Vedant_Photo.png';
 import prat from '../assets/images/WhatsApp Image 2024-04-09 at 2.22.40 PM.jpeg';
 import atha from '../assets/images/PSX_20240223_234441.jpg';
 
-function Footer() {
+function Faculty() {
 
     return (
 
         <div class="flex items-center justify-center text-center w-[100%]">
             <div class="flex flex-col items-center justify-center rounded-tr-full rounded-bl-full w-full bg-white">
                 <div class="flex flex-col p-4 m-2 w-full">
-                    <div class="text-xl md:text-3xl font-medium">Web Team!!</div>
+                    <div class="text-xl md:text-3xl font-medium">Faculty Committee</div>
 
                     <div
                         class="flex items-center justify-center md:flex-row flex-col space-x-4 space-y-4 p-2"
@@ -192,4 +192,4 @@ function Footer() {
     );
 }
 
-export default Footer;
+export default Faculty;

@@ -15,6 +15,8 @@ import Contact from './pages/Contact';
 import NotFound from './pages/NotFound'
 // import UpcomingEvents from './components/Upcomingevents';
 import Webteam from './components/webteam';
+import Coreteam from './components/coreteam';
+import Faculty from './components/faculty';
 
 const App = () => {
   return (
@@ -36,6 +38,8 @@ const App = () => {
             <Route path="/resources" element={<Resources />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/webteam" element={<Webteam />} />
+            <Route path="/Coreteam" element={<Coreteam />} />
+            <Route path="/faculty" element={<Faculty/>} />
 
           </Route>
         </Routes>
