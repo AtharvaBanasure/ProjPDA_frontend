@@ -2,9 +2,9 @@ import React from "react";
 
 function About() {
     return (
-        <div className="flex flex-col items-center justify-center my-8 mx-4 md:mx-16  md:-mt-32c">
+        <div className="flex flex-col items-center justify-center my-16 mx-16 md:mx-32 px-8 md:px-16 md:-mt-32c">
             <h1 className="text-3xl text-[#426B1F] font-bold mb-6">About Us</h1>
-
+            
             <p className="">
                 Professional Development Activity (PDA) stands as a cornerstone
                 initiative conducted by the IT department, dedicated to fostering the

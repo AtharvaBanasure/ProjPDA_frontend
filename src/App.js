@@ -14,7 +14,7 @@ import EditPost from './pages/EditPost';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound'
 // import UpcomingEvents from './components/Upcomingevents';
-
+import Webteam from './components/webteam';
 
 const App = () => {
   return (
@@ -35,7 +35,7 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="*" element={<NotFound />} />
-
+            <Route path="/webteam" element={<Webteam />} />
 
           </Route>
         </Routes>
