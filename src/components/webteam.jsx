@@ -3,6 +3,7 @@ import React from "react";
 import ved from '../assets/images/Vedant_Photo.png';
 import prat from '../assets/images/profile.jpg';
 import atha from '../assets/images/PSX_20240223_234441.jpg';
+import Kshitij from '../assets/images/dhapse.jpeg';
 
 function Footer() {
 
@@ -150,9 +151,10 @@ function Footer() {
                                 class="h-40 w-40 border-2 border-green-800 rounded-full overflow-hidden bg-gray-200"
                             >
                                 <img
-                                    src="https://source.unsplash.com/300x300/?man,boy"
+                                    src={Kshitij}
                                     alt=""
                                     class=""
+                                    className="h-full w-full object-cover"
                                 />
                             </div>
 
