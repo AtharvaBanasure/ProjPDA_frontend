@@ -8,7 +8,7 @@ function Faculty() {
 
     return (
 
-        <div class="flex items-center justify-center text-center w-[100%]">
+        <div class="min-h-screen flex items-center justify-center text-center w-[100%]">
             <div class="flex flex-col items-center justify-center rounded-tr-full rounded-bl-full w-full bg-white">
                 <div class="flex flex-col p-4 m-2 w-full">
                     <div class="text-xl md:text-3xl font-medium">Faculty Committee</div>
