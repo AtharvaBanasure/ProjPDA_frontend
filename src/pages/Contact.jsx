@@ -27,7 +27,7 @@ function Contact() {
 const handleSubmit = async () => {
     if (emailError) {
         // If there's an email error, prevent form submission
-        return;
+        return alert("Enter valid email address.");
     }
     try {
         const response = await axios.post(`${process.env.REACT_APP_API_URL}/mail`, {
@@ -108,7 +108,7 @@ const handleSubmit = async () => {
                     </div>
                 </div>
                 {/* Submit button */}
-                <div className="p-2 w-full">
+                <div className="p-8 w-full">
                     <button type="button" onClick={handleSubmit} className="flex mx-auto text-white bg-green-700 hover:bg-green-500 border-0 py-2 px-8 focus:outline-none rounded text-lg">Submit</button>
                 </div>
             </div>
