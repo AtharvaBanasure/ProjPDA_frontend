@@ -9,12 +9,20 @@ function Contact() {
     });
 
     const { name, email, message } = formData;
-
+    const [emailError, setEmailError] = useState(false);
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-  
+    const handleBlur = () => {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            setEmailError(true);
+        } else {
+            setEmailError(false);
+        }
+    };
+    
 
 const handleSubmit = async () => {
     try {
@@ -72,11 +80,15 @@ const handleSubmit = async () => {
                             id="email"
                             name="email"
                             value={email}
+                            onBlur={handleBlur}
                             onChange={handleChange}
                             className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                         />
                     </div>
                 </div>
+                {emailError && (
+                            <p className="text-red-500 text-xs mt-1">&emsp;Please enter a valid email address.</p>
+                        )}
                 {/* Message */}
                 <div className="p-2 w-full">
                     <div className="relative">
@@ -88,6 +100,7 @@ const handleSubmit = async () => {
                             onChange={handleChange}
                             className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                         ></textarea>
+                         
                     </div>
                 </div>
                 {/* Submit button */}
