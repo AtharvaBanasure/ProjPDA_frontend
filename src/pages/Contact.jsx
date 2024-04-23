@@ -25,6 +25,10 @@ function Contact() {
     
 
 const handleSubmit = async () => {
+    if (emailError) {
+        // If there's an email error, prevent form submission
+        return;
+    }
     try {
         const response = await axios.post(`${process.env.REACT_APP_API_URL}/mail`, {
             name: name,
